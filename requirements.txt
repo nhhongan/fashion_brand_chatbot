@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg
+psycopg2-binary
+python-decouple==3.8
+python-dotenv==1.0.1
+python-jose==3.3.0
+python-multipart==0.0.6

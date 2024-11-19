@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, BigInteger
-from database.base import Base 
+from sqlalchemy import Column, Integer, String, BigInteger, ForeignKey
+from database.__init__ import Base 
 
 class User(Base):
     __tablename__ = "user"
@@ -11,7 +11,7 @@ class User(Base):
     phone = Column(Integer, index=True)
     username = Column(String, index=True)
     password = Column(String, index=True)
-    role_id = Column(Integer, index=True)
+    role_id = Column(Integer, ForeignKey('role.role_id'),index=True)
     
     
 print("User model created successfully.")

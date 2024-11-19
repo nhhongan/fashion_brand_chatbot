@@ -1,6 +1,6 @@
 # FILE: Cart.py
 from sqlalchemy import Column, Integer, ForeignKey
-from database.base import Base  # Assuming Base is defined in a module named base
+from database.__init__ import Base  # Assuming Base is defined in a module named base
 
 class Cart(Base):
     __tablename__ = "cart"

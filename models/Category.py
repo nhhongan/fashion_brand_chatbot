@@ -1,6 +1,6 @@
 # FILE: Category.py
 from sqlalchemy import Column, Integer, String, BigInteger
-from database.base import Base 
+from database.__init__ import Base 
 class Category(Base):
     __tablename__ = "category"
     category_id = Column(Integer, index=True, primary_key=True)

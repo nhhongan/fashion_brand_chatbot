@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from models.Order import Order  # Adjust the path to where your Order model is defined
 
-from database.database import get_db  # Replace with your actual DB session dependency
+from database.session import get_db  # Replace with your actual DB session dependency
 from fastapi import APIRouter
 
 router = APIRouter(

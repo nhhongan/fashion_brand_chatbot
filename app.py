@@ -1,9 +1,18 @@
 from fastapi import FastAPI
 from routers import api_routers
 from middlewares.cors import apply_cors_middleware
-from database import Base, engine  
+import database.setup
+from database.__init__ import engine
+from models import Category, Order,Payment,Product,Role , User , Cart
 
-
+#Create database tables
+Category.Base.metadata.create_all(bind=engine)
+Order.Base.metadata.create_all(bind=engine)
+Payment.Base.metadata.create_all(bind=engine)
+Product.Base.metadata.create_all(bind=engine)
+Role.Base.metadata.create_all(bind=engine)
+User.Base.metadata.create_all(bind=engine)
+Cart.Base.metadata.create_all(bind=engine)
 
 def create_app() -> FastAPI:
     app = FastAPI()

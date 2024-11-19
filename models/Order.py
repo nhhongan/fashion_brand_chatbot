@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, BigInteger
-from database.base import Base 
+from database.__init__ import Base 
 
 class Order(Base):
     __tablename__ = "order"

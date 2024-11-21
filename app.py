@@ -14,6 +14,9 @@ Role.Base.metadata.create_all(bind=engine)
 User.Base.metadata.create_all(bind=engine)
 Cart.Base.metadata.create_all(bind=engine)
 
+
+
+
 def create_app() -> FastAPI:
     app = FastAPI()
     app = apply_cors_middleware(app)

@@ -1,0 +1,5 @@
+﻿payment_id,type
+1,Card
+2,Cash
+3,Bank
+4,Momo

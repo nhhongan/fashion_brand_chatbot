@@ -7,9 +7,10 @@ class Product(Base):
     product_id = Column(Integer,primary_key=True, index=True,autoincrement=True)
     category_id = Column(Integer, ForeignKey('category.category_id') ,index=True)
     name = Column(String, index=True)
-    description = Column(String, index=True)
+    department = Column(String, index=True)
+    clothing = Column(String, index=True)
+    type_of_clothing = Column(String, index=True)
     price = Column(BigInteger, index=True)
-    image = Column(String, index=True)
     color = Column(String, index=True)
     
 

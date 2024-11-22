@@ -13,7 +13,7 @@ services:
     depends_on:
       - db
     environment:
-      - DB_STRING=postgresql+asyncpg://admin:123admin@db:5432/chatbotAI
+      - DB_STRING=postgresql://admin:123admin@db:5432/chatbotAI
   db:
     image: postgres:16.1-alpine3.19
     ports:

@@ -1,0 +1,11 @@
+﻿user_id,fullname,address,email,phone,username,password,role_id
+1,admin,string,admin@example.com,123,admin,admin,1
+2,Minh Quan,string,user1@example.com,124,string,string,2
+3,Thao My,string,user2@example.com,125,string,string,2
+4,Hong An,string,user3@example.com,126,string,string,2
+5,Quynh Anh,string,user4@example.com,127,string,string,2
+6,An Phu,string,user5@example.com,128,string,string,2
+7,Long Van,string,user6@example.com,129,string,string,2
+8,Trung Ky,string,user7@example.com,130,string,string,2
+9,Bao An,string,user8@example.com,131,string,string,2
+10,Bao Ngoc,string,user9@example.com,132,string,string,2

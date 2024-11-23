@@ -1,4 +1,4 @@
-from models import Category, Order,Payment,Product,Role , User , Cart 
+from models import Role , User,Payment,Product, Order
 from database.__init__ import Base,engine,SessionLocal
 import csv
 

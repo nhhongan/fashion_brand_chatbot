@@ -6,8 +6,10 @@ class Order(Base):
     
     order_id = Column(Integer, primary_key=True, index=True,autoincrement=True)
     user_id = Column(Integer, index=True)
+    quantity = Column(Integer, index=True)
     total_price = Column(BigInteger, index=True)
     payment_id = Column(Integer, ForeignKey('payment.payment_id'), index=True)
+    product_id = Column(Integer, ForeignKey('product.product_id'), index=True)
     
     
 print("Order model created successfully.")

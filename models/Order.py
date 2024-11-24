@@ -24,7 +24,7 @@ def fetch_product_price(session, product_id):
     """
     try:
         product = session.execute(f"SELECT price FROM product WHERE product_id = {product_id}").fetchone()
-        return product[0] if product else 0  # Return 0 if product not found
+        return product[0] if product else 0
     except SQLAlchemyError as e:
         print(f"Error fetching product price: {e}")
         return 0

@@ -16,17 +16,29 @@ class Order(Base):
     
     
 print("Order model created successfully.")
-
-def fetch_product_price(session, product_id):
+def import_order_data(csv_file_path):
     """
-    Fetch the price of a product from the product table based on product_id.
+    Import data into the Product table from a CSV file.
     """
     try:
-        product = session.execute(f"SELECT price FROM product WHERE product_id = {product_id}").fetchone()
-        return product[0] if product else 0
-    except SQLAlchemyError as e:
-        print(f"Error fetching product price: {e}")
-        return 0
+        df = pd.read_csv(csv_file_path)
+        with SessionLocal() as session:
+            for _, row in df.iterrows():
+                order = Order(
+                    order_id=int(row['order_id']),
+                    user_id=int(row['user_id']),
+                    quantity=int(row['quantity']),
+                    payment_id=int(row['payment_id']),
+                    product_id=int(row['product_id']),
+                )
+                session.add(order)
+            session.commit()
+            print(f"User data imported successfully from {csv_file_path}")
+    except Exception as e:
+        print(f"Error importing Product data: {e}")
+
+
+import_order_data('order.csv')
 
 # def import_order_data(csv_file_path):
 #     """
@@ -66,4 +78,4 @@ def fetch_product_price(session, product_id):
 #         print(f"An unexpected error occurred: {e}")
         
         
-# import_order_data('order_formatted.csv')
+# import_order_data('order.csv')

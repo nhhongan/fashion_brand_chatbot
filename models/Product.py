@@ -41,7 +41,7 @@ def import_product_data(csv_file_path):
             session.commit()
             print(f"User data imported successfully from {csv_file_path}")
     except Exception as e:
-        print(f"Error importing User data: {e}")
+        print(f"Error importing Product data: {e}")
 
 
 import_product_data('product_df3.csv')

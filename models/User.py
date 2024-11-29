@@ -31,7 +31,7 @@ def import_user_data(csv_file_path):
                     email=row['email'],
                     phone=row['phone'],
                     username=row['username'],
-                    password=row['password'],  # Hash password
+                    password=row['password'],  
                     role_id=row['role_id'],  # Ensure roles exist in Role table
                 )
                 session.add(user)
@@ -41,4 +41,4 @@ def import_user_data(csv_file_path):
         print(f"Error importing User data: {e}")
 
 
-import_user_data('user.csv')
+#import_user_data('user.csv')

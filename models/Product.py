@@ -5,7 +5,7 @@ import pandas as pd
 class Product(Base):
     __tablename__ = "product"
     
-    product_id = Column(Integer,primary_key=True, index=True,autoincrement=True)
+    product_id = Column(Integer,primary_key=True, index=True)
     name = Column(String, index=True)
     department = Column(String, index=True)
     clothing = Column(String, index=True)
@@ -44,4 +44,4 @@ def import_product_data(csv_file_path):
         print(f"Error importing Product data: {e}")
 
 
-import_product_data('product_df3.csv')
+#import_product_data('product_df3.csv')

@@ -3,8 +3,6 @@ from sqlalchemy import BigInteger, Column, ForeignKey, Integer, String
 from sqlalchemy.exc import SQLAlchemyError
 
 from database.__init__ import Base, SessionLocal
-
-
 class Order(Base):
     __tablename__ = "order"
     
@@ -14,8 +12,9 @@ class Order(Base):
     payment_id = Column(Integer, ForeignKey('payment.payment_id'), index=True)
     product_id = Column(Integer, ForeignKey('product.product_id'), index=True)
     
-    
 print("Order model created successfully.")
+
+
 def import_order_data(csv_file_path):
     """
     Import data into the Product table from a CSV file.
@@ -38,7 +37,7 @@ def import_order_data(csv_file_path):
         print(f"Error importing Product data: {e}")
 
 
-import_order_data('order.csv')
+#import_order_data('order.csv')
 
 # def import_order_data(csv_file_path):
 #     """

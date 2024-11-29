@@ -8,10 +8,9 @@ class Payment(Base):
     type = Column(String, index=True)
     
     
-    
 print("Payment model created successfully.")
 
-def import_csv_to_database(csv_file_path):
+def import_payment_data(csv_file_path):
     # Create a session
     try:
         # Read the CSV file using pandas
@@ -30,4 +29,4 @@ def import_csv_to_database(csv_file_path):
         print(f"Error importing data: {e}")
 
     
-import_csv_to_database('Payment_csv.csv')
+#import_csv_to_database('Payment_csv.csv')

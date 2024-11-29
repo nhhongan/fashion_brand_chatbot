@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # Import all the models in the database
 
-URL_DATABASE = "postgresql://admin:123admin@db:5432/chatbotAI"
+URL_DATABASE = config("DB_STRING")
 
 engine = create_engine(URL_DATABASE)
 

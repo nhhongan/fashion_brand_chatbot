@@ -64,7 +64,7 @@ def main():
             payload : str
         
         # Title
-        st.header("🤖 Product Recommendation Chatbot 🤖")
+        st.header("🤖 Personal Product Recommender - Chime")
 
         user = "User"
         assistant = "Assistant"
@@ -72,7 +72,7 @@ def main():
 
         if message not in st.session_state:
             st.session_state[message] = [Message(actor = assistant,
-                                                 payload= "Hi! How can I help you? 😀")]
+                                                 payload= "Hi! How can I help you?")]
 
         msg: Message
         for msg in st.session_state[message]:
@@ -109,7 +109,9 @@ def main():
         chatbot()
     st.sidebar.markdown(''' 
                         ## Created by: 
-                        Ahmad Luay Adnani - [GitHub](https://github.com/ahmadluay9) 
+                        Ahmad Luay Adnani - [GitHub](https://github.com/ahmadluay9)
+                        ## Modified by:
+                        [IU Students](https://langchain.com/) 
                         ''')
 
 if __name__ == '__main__':

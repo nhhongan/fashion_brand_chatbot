@@ -1,0 +1,10 @@
+flappybird-1:
+  env_id: FlappyBird-v0
+  replay_buffer_size: 10000
+  minibatch_size: 32
+  epsilon_initial: 1.0
+  epsilon_decay: 0.9995
+  epsilon_final: 0.05
+  update_target_frequency: 10 # Update target network every 10 steps
+  discount_factor: 0.99 # Gamma
+  learning_rate: 0.00025

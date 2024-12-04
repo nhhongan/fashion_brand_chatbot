@@ -8,3 +8,6 @@ flappybird-1:
   update_target_frequency: 10 # Update target network every 10 steps
   discount_factor: 0.99 # Gamma
   learning_rate: 0.00025
+  max_reward: 100000
+  max_episode: 100000
+  hidden_dim: 512

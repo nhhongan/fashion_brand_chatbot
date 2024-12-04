@@ -60,7 +60,7 @@ class Agent:
         terminated = torch.tensor(terminated, dtype=torch.float32).to(device)
 
         with torch.no_grad():
-            target_q = (1-terminated) * rewards  + self.discount_factor * target_dqn(new_states).max(dim=1)[0]
+            target_q = rewards + (1-terminated) *  self.discount_factor * target_dqn(new_states).max(dim=1)[0]
 
         current_q = policy_dqn(states).gather(dim=1, index=actions.unsqueeze(dim=1)).squeeze()
         loss = self.loss_fn(target_q, current_q)
@@ -102,7 +102,7 @@ class Agent:
             with open(self.LOG_FILE, "a") as f:
                 f.write(log_message + "\n")
 
-        env = gym.make(self.env_id, render_mode="human" if is_render else None, use_lidar=True)
+        env = gym.make(self.env_id, render_mode="human" if is_render else None)
         num_states = env.observation_space.shape[0]
         num_actions = env.action_space.n
 
@@ -119,7 +119,7 @@ class Agent:
             best_reward = -9999
             epsilon_history = [epsilon]
         else:
-            policy.load_state_dict(torch.load(self.MODEL_FILE, map_location=torch.device('cpu')))
+            policy.load_state_dict(torch.load(self.MODEL_FILE, map_location=device))
             policy.eval()
 
         episode_per_reward = []
@@ -129,7 +129,6 @@ class Agent:
             state = torch.tensor(state, dtype=torch.float32).to(device)
             terminated = False
             episode_reward = 0.0
-            print(f"Episode {episode + 1}/{self.max_episode}")
             ### UNTIL THE GAME IS OVER
             while (not terminated and episode_reward < self.max_reward):
                 # Next action
@@ -157,7 +156,7 @@ class Agent:
             episode_per_reward.append(episode_reward)
             if is_training:
                 if episode_reward > best_reward:
-                    log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward:0.1f} ({(episode_reward-best_reward)/best_reward*100:0.1f}%)"
+                    log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward:0.1f} ({(episode_reward-best_reward)/best_reward*100:0.1f}%) at episode {episode+1}"
                     print(log_message)
                     with open(self.LOG_FILE, 'a') as f:
                         f.write(log_message + "\n")
@@ -180,8 +179,11 @@ class Agent:
                     target_dqn.load_state_dict(policy.state_dict())
 
                 if episode % 100 == 0:
-                    print(f"Episode {episode + 1}/{1000}, Reward: {episode_reward}, Epsilon: {epsilon}")
-
+                    print(f"Episode {episode + 1}/{self.max_episode}, Reward: {episode_reward:.2f}, Epsilon: {epsilon:.2f}")
+        log_message = f"{datetime.now().strftime(DATE_FORMAT)}: Training ended..."
+        print(log_message)
+        with open(self.LOG_FILE, "a") as f:
+            f.write(log_message + "\n")
         env.close()
         return episode_per_reward
 
